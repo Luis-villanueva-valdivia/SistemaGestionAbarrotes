@@ -1,12 +1,14 @@
 <!--
 Título del PR (se convierte en el commit final del squash merge):
   tipo: descripción (iss-XX)
-  Ej.: refactor: separar consulta de modificador en historial de ventas (iss-04)
+  Ej.: refactor: encapsular campos de ProductoModel (iss-41)
 
 ⚠️ Revisa que el PR vaya a: Luis-villanueva-valdivia/SistemaGestionAbarrotes · develop
 -->
 
-Closes #N
+Closes #XX
+
+**Requisitos que conserva:** RF-XX, RF-XX <!-- Los RF de la ERS que pasan por el código tocado -->
 
 ## Descripción
 
@@ -14,7 +16,8 @@ Closes #N
 
 ## Cambios
 
-<!-- Qué se agregó, modificó o eliminó. En refactorizaciones: mal olor → técnica aplicada. -->
+<!-- Refactorizaciones: code smell → técnica aplicada → clase/método (ID de la matriz).
+     Pruebas: clases probadas y número de pruebas. -->
 -
 -
 
@@ -22,7 +25,7 @@ Closes #N
 
 1. `git fetch && git switch tipo/iss-XX-descripcion`
 2. `cd sistema-caja && mvn clean compile && mvn test`
-3. <!-- Clase main o pantalla a abrir, y qué hacer -->
+3. <!-- Pantalla o menú de consola a abrir, y qué hacer -->
 4. Resultado esperado:
 
 ## Criterios de aceptación
@@ -33,20 +36,22 @@ Closes #N
 
 ## Evidencia
 
-<!-- Capturas de consola o de la app. Si no aplica, escribe "No aplica". -->
+<!-- Captura de `mvn test` en verde y, si aplica, de la app. -->
 
 ## Checklist
 
 - [ ] La rama sale de `develop` y sigue el formato `tipo/iss-XX-descripcion`.
 - [ ] El título y los commits siguen el formato `tipo: descripción (iss-XX)`.
 - [ ] El PR va a `develop` de **este** repo, no al original.
-- [ ] `mvn clean compile` termina sin errores.
-- [ ] `mvn test` pasa en verde.
-- [ ] Refactorizaciones: una técnica por commit y sin cambiar el comportamiento.
-- [ ] Clases y métodos públicos con Javadoc.
+- [ ] `mvn clean compile` termina sin errores y `mvn test` pasa en verde.
+- [ ] Pruebas: solo agregué archivos en `src/test` y cada prueba indica su RF.
+- [ ] Refactorizaciones: una técnica por commit, con su nombre del curso.
+- [ ] Refactorizaciones: el sistema hace lo mismo que antes, en la interfaz gráfica y en la de consola.
+- [ ] Las técnicas aplicadas están anotadas en la matriz de refactorizaciones.
+- [ ] Clases y métodos públicos que toqué tienen Javadoc.
 - [ ] Sin números mágicos, sin código comentado ni `System.out` de depuración.
-- [ ] Solo se agregó al final de archivos ajenos, con comentario de sección.
-- [ ] Revisor asignado según la revisión cruzada de `docs/convenciones.md`.
+- [ ] Si toqué una clase de otro issue, lo avisé en ese issue.
+- [ ] Revisor asignado según `docs/convenciones.md` §10, y avisé en Slack.
 
 ## Notas para el revisor
 
