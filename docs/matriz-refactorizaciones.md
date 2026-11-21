@@ -1,11 +1,13 @@
 # Matriz de refactorizaciones
 
-Registro de los *code smells* detectados y de la técnica que se aplica en cada caso. Responsable de integrarla y revisarla: **Katherin**. Reglas completas en `docs/convenciones.md` §8.
+Registro de los *code smells* detectados y de la técnica que se aplica en cada caso. Responsable de integrarla y revisarla: **Katherin**. Reglas completas en `docs/convenciones.md` §12.1 y §5.
 
-- Cada quien escribe **solo en la sección de su tema** (así no hay conflictos en Git).
+- Cada quien escribe **solo en la sección de su unidad** (así no hay conflictos en Git).
+- **ID:** prefijo de la unidad y número: `GRA`, `GEN`, `CON`, `MOV`, `LLA`, `DAT` (por ejemplo, `DAT-03`). Es el mismo que va en el comentario `// [DAT-03] Técnica` del código.
+- **Code smell** y **Técnica:** con el nombre del curso.
 - **Estado:** Detectado · En progreso · Aplicada (#PR) · No aplica.
 - **Justificación:** solo cuando una técnica no se aplica.
-- Al final de cada tema, la lista de técnicas del curso que **no aplican** en el sistema y por qué.
+- Al final de cada unidad, la lista de técnicas del curso que **no aplican** en el sistema y por qué.
 
 ---
 
