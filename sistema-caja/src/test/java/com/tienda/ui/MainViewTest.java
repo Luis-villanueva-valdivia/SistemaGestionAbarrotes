@@ -120,43 +120,53 @@ class MainViewTest {
 
     @Test
     void mostrarMenu_opcionCero_muestraElMenuYSale() {
-        // RF-01 a RF-18: menú principal de consola (ERS, Apéndice A, figura A.6)
+        // RF-06, RF-10: la opción "3) Ventas" del menú principal es la única entrada de
+        // consola a registrar venta y listar ventas (ERS, Apéndice A, figura A.6)
         assertEquals(MENU_PRINCIPAL + "Saliendo..." + N, ejecutar("0"));
     }
 
     @Test
-    void mostrarMenu_opcionInvalida_avisaYVuelveAMostrarElMenu() {
-        // RF-01 a RF-18
-        String texto = ejecutar("9", "abc", "", "0");
+    void mostrarMenu_opcionInvalida_avisaYPermiteSeguirAListarVentas() throws SQLException {
+        // RF-10: después de opciones inválidas, el menú sigue llevando a "Listar ventas"
+        String texto = ejecutar("9", "abc", "", "3", "2", "0");
 
         assertEquals(3, veces(texto, "Opción inválida"));
-        assertEquals(4, veces(texto, "=== SISTEMA DE CAJA - MENU PRINCIPAL ==="));
+        assertTrue(texto.contains("===== HISTORIAL DE VENTAS ====="));
+        assertEquals(contar("SELECT COUNT(*) FROM venta"), veces(texto, "ID:"));
         assertTrue(texto.endsWith("Saliendo..." + N));
     }
 
     @Test
-    void mostrarMenu_opcionConEspacios_seRecorta() {
-        // RF-01 a RF-18
-        assertTrue(ejecutar("  0  ").endsWith("Saliendo..." + N));
+    void mostrarMenu_opcionesConEspacios_seRecortanYListanLasVentas() {
+        // RF-10: "  3  " y "  2  " se recortan y llegan a "Listar ventas"
+        String texto = ejecutar("  3  ", "  2  ", "  0  ");
+
+        assertTrue(texto.contains("===== HISTORIAL DE VENTAS ====="));
+        assertFalse(texto.contains("Opción inválida"));
+        assertTrue(texto.endsWith("Saliendo..." + N));
     }
 
     @Test
-    void mostrarMenu_seAcabaLaEntradaSinElegirSalir_lanzaNoSuchElementException() {
-        // RF-01 a RF-18: el menú no tiene salida si se cierra la entrada
-        simularEntrada("9");
+    void mostrarMenu_seAcabaLaEntradaAlRegistrarVenta_lanzaExcepcionYNoGuarda() throws SQLException {
+        // RF-06: si la entrada se cierra a media venta, se lanza NoSuchElementException
+        // y no se guarda ninguna venta
+        simularEntrada("3", "1", "", "1");
         MainView vista = new MainView();
 
         assertThrows(NoSuchElementException.class, vista::mostrarMenu);
+        assertEquals(0, contar("SELECT COUNT(*) FROM venta WHERE id > " + maxVentaAntes));
     }
 
     @Test
-    void main_creaLaVistaYMuestraElMenu() {
-        // RF-01 a RF-18
-        simularEntrada("0");
+    void main_creaLaVistaYPermiteListarLasVentas() {
+        // RF-10: el punto de entrada de consola llega a "Listar ventas"
+        simularEntrada("3", "2", "0");
 
         MainView.main(new String[0]);
 
-        assertEquals(MENU_PRINCIPAL + "Saliendo..." + N, salida.toString(StandardCharsets.UTF_8));
+        String texto = salida.toString(StandardCharsets.UTF_8);
+        assertTrue(texto.startsWith(MENU_PRINCIPAL + MENU_VENTAS + "===== HISTORIAL DE VENTAS ====="));
+        assertTrue(texto.endsWith("Saliendo..." + N));
     }
 
     // ===================== Submenú de ventas =====================
