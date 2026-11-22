@@ -54,16 +54,20 @@
       <classifier>${javafx.platform}</classifier>
     </dependency>
 
-    <!-- Tests -->
+    <!-- JUnit 5: API, parámetros y motor de ejecución -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <scope>test</scope>
     </dependency>
-
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
       <scope>test</scope>
     </dependency>
 
@@ -133,6 +137,41 @@
 
       </plugins>
     </pluginManagement>
+
+    <plugins>
+      <!-- Copia data/ a un directorio aislado antes de ejecutar las pruebas. -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copiar-base-de-datos-para-pruebas</id>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/test-run/data</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.basedir}/data</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+              <overwrite>true</overwrite>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- Las rutas relativas data/tienda.db apuntan a target/test-run/data/. -->
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <workingDirectory>${project.build.directory}/test-run</workingDirectory>
+          <useModulePath>false</useModulePath>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
 </project>
