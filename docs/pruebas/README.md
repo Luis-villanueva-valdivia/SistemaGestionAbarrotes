@@ -1,24 +1,11 @@
-# Base de pruebas — ISS-22
+# Evidencia de pruebas
 
-## Ejecutar las pruebas
+Una carpeta por entrega (`entrega-2/`, `entrega-3/`) con el reporte de `target/surefire-reports` y la captura de `mvn test` en un clon limpio. Ver `docs/convenciones.md` §11.4.
 
-Se necesita JDK 17 y Maven 3.9 o superior. Desde la carpeta `sistema-caja/`, ejecutar:
+## Ejecución desde Maven
 
-```bash
-mvn clean test
-```
+Las pruebas deben ejecutarse mediante Maven desde la carpeta `sistema-caja/`, utilizando `mvn test` o `mvn clean test`. No deben ejecutarse con el botón de pruebas del IDE, ya que este no utiliza necesariamente el `workingDirectory` configurado en Maven Surefire. Ejecutarlas desde el IDE podría hacer que la ruta relativa `data/tienda.db` apunte a la base de datos original en lugar de la copia aislada.
 
-El `pom.xml` configura JUnit 5 y copia el contenido completo de `data/` a `target/test-run/data/` durante la fase `process-test-resources`. Maven Surefire ejecuta las pruebas desde `target/test-run/`. Por eso, la ruta relativa `data/tienda.db` que utiliza `ConexionDB` resuelve a la copia de pruebas y no a `sistema-caja/data/tienda.db`. No se modifica `src/main` ni se requiere cambiar la ruta de conexión de la aplicación.
+## Evidencia de las entregas
 
-## Ejemplos incluidos
-
-Los cuatro ejemplos iniciales están en `sistema-caja/src/test/java/com/tienda/AppTest.java`:
-
-- **Controlador con DAO falso:** `calcularTotal_conDaoFalso_sumaPrecioPorCantidad` prueba `VentaController.calcularTotal` sin abrir la base de datos.
-- **DAO contra la base aislada:** `listarTodos_conBaseAislada_consultaCopiaYNoModificaOriginal` usa `VentaDAO.listarTodos`, verifica que la copia exista dentro de `target/test-run/data` y comprueba que el archivo original conserva exactamente su contenido.
-- **Método que imprime:** `generarTicket_conVentaValida_imprimeDatosDeLaVenta` captura temporalmente `System.out` y verifica el texto del ticket.
-- **Vista de consola:** `mostrarMenu_conEntradaCero_muestraMenuYRegresa` sustituye temporalmente `System.in` por una entrada simulada y captura la salida del menú.
-
-## Cómo reutilizar los ejemplos
-
-Cada responsable debe crear sus propias clases de prueba bajo `src/test/java`, siguiendo el paquete de la clase que prueba (por ejemplo, `com/tienda/cliente/ClienteDAOTest.java`). Para controladores, inyectar un DAO falso y evitar SQLite; para DAO, usar la conexión relativa `data/tienda.db`, que apunta automáticamente a la copia aislada; para métodos que imprimen, guardar y restaurar `System.out`; y para vistas de consola, guardar y restaurar `System.in` y pasar un `Scanner` construido con esa entrada. No colocar documentación dentro de `src/test/java`: esta guía vive en `docs/pruebas/` a nivel raíz del repositorio.
+Para cada entrega se debe crear una carpeta correspondiente (`entrega-2/`, `entrega-3/`) dentro de `docs/pruebas/`. En ella se guardará el reporte generado en `target/surefire-reports/` y una captura de la ejecución de `mvn test` en un clon limpio. Esta estructura se utilizará para reunir la evidencia de cada entrega, de acuerdo con `docs/convenciones.md`, sección 11.4.

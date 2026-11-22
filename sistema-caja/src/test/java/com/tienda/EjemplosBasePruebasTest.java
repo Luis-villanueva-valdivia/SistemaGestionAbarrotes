@@ -29,10 +29,13 @@ import com.tienda.venta.VentaModel;
 import com.tienda.util.ConexionDB;
 
 /**
- * Ejemplos mínimos de los cuatro tipos de pruebas requeridos para ISS-22.
- * Las pruebas de cada módulo deben implementarse en sus propios archivos.
+ * Ejemplos de referencia de los cuatro tipos de pruebas
+ * preparados para ISS-22.
+ *
+ * Estas pruebas muestran los patrones que deben seguir los responsables
+ * de cada módulo. No sustituyen las pruebas específicas de cada módulo.
  */
-class AppTest {
+class EjemplosBasePruebasTest {
 
     /**
      * Ejemplo de prueba de controlador con un DAO falso, sin acceder a SQLite.
