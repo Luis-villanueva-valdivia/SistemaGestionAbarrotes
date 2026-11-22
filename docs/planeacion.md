@@ -14,7 +14,7 @@ Issues, responsables, dependencias y calendario hasta la **Entrega 2 (martes 24 
 
 | # | Issue | Responsable | Depende de | Para cuándo |
 |---|---|---|---|---|
-| #22 | ISS-22 · Pruebas · Preparar la base de pruebas aislada | Oswaldo | — | Sáb 21 · 23:59 |
+| #22 | ISS-22 · Pruebas · Preparar la base de pruebas aislada | Oswaldo | — | Dom 22 · 11:00 |
 | #23 | ISS-23 · Generalización y grandes refactorizaciones · Detectar code smells en todo el sistema | Luis | — | Dom 22 · 14:00 |
 | #24 | ISS-24 · Condicionales · Detectar code smells en todo el sistema | Oswaldo | — | Dom 22 · 14:00 |
 | #25 | ISS-25 · Movimiento de funciones · Detectar code smells en todo el sistema | Paola | — | Dom 22 · 14:00 |
@@ -125,7 +125,7 @@ flowchart LR
 
 | Cuándo | Qué | Quién |
 |---|---|---|
-| **Sáb 21 · 23:59** | #22 base de pruebas fusionada | Oswaldo |
+| **Dom 22 · 11:00** | #22 base de pruebas fusionada | Oswaldo |
 | **Dom 22 · 14:00** | #23 a #27 detección fusionada en la matriz | Todos |
 | **Dom 22 · 18:00** | #33 matriz integrada; se crean los sub-issues | Katherin; cada quien los suyos |
 | **Dom 22 · 21:00** | Revisión de avance en Slack: ¿se cumple todo o se ajusta? | Todos |
