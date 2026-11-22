@@ -86,6 +86,7 @@
         <!-- default lifecycle -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
+          <version>3.3.1</version>
         </plugin>
 
         <plugin>
@@ -95,6 +96,7 @@
 
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.3.0</version>
         </plugin>
 
         <plugin>
@@ -140,7 +142,6 @@
       <!-- Copia data/ a un directorio aislado antes de ejecutar las pruebas. -->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>3.3.1</version>
         <executions>
           <execution>
             <id>copiar-base-de-datos-para-pruebas</id>
@@ -165,7 +166,6 @@
       <!-- Las rutas relativas data/tienda.db apuntan a target/test-run/data/. -->
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.3.0</version>
         <configuration>
           <workingDirectory>${project.build.directory}/test-run</workingDirectory>
           <useModulePath>false</useModulePath>
