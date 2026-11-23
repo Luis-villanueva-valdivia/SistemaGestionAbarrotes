@@ -119,10 +119,12 @@ class MainViewTest {
     // ===================== Menú principal =====================
 
     @Test
-    void mostrarMenu_opcionCero_muestraElMenuYSale() {
-        // RF-06, RF-10: la opción "3) Ventas" del menú principal es la única entrada de
-        // consola a registrar venta y listar ventas (ERS, Apéndice A, figura A.6)
-        assertEquals(MENU_PRINCIPAL + "Saliendo..." + N, ejecutar("0"));
+    void mostrarMenu_opcionTres_abreElSubmenuDeVentasYLaCeroSale() {
+        // RF-06, RF-10: la opción "3) Ventas" abre el submenú con "Registrar venta" (RF-06)
+        // y "Listar ventas" (RF-10); "0) Volver" regresa y "0) Salir" termina
+        // (ERS, Apéndice A, figura A.6)
+        assertEquals(MENU_PRINCIPAL + MENU_VENTAS + "Volviendo al menú principal..." + N
+                + MENU_PRINCIPAL + "Saliendo..." + N, ejecutar("3", "0", "0"));
     }
 
     @Test
@@ -170,13 +172,6 @@ class MainViewTest {
     }
 
     // ===================== Submenú de ventas =====================
-
-    @Test
-    void menuVentas_opcionCero_regresaAlMenuPrincipal() {
-        // RF-06, RF-10
-        assertEquals(MENU_PRINCIPAL + MENU_VENTAS + "Volviendo al menú principal..." + N
-                + MENU_PRINCIPAL + "Saliendo..." + N, ejecutar("3", "0", "0"));
-    }
 
     @Test
     void menuVentas_opcionInvalida_tambienRegresa() {
