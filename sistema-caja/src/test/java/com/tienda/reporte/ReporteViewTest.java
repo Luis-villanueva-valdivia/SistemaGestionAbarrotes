@@ -68,7 +68,7 @@ class ReporteViewTest {
 
     @Test
     void mostrarMenu_opcionDos_imprimeElInventarioConNombreYCategoriaCruzados() {
-        // RF-17 (la ERS ya lo describe). B-XX: la cabecera dice "ID | Nombre | Cantidad | Categoria",
+        // RF-17 (la ERS ya lo describe). B-12 (#52): la cabecera dice "ID | Nombre | Cantidad | Categoria",
         // pero se imprime la categoría donde va el nombre y viceversa
         String salida = ejecutarMenu("2", "0");
 
@@ -78,7 +78,7 @@ class ReporteViewTest {
 
     @Test
     void mostrarMenu_opcionTresConVentas_muestraLaCategoriaEnLugarDelNombre() {
-        // RF-18. B-XX: "Producto:" muestra la categoría, no el nombre del producto
+        // RF-18. B-12 (#52): "Producto:" muestra la categoría, no el nombre del producto
         String salida = ejecutarMenu("3", String.valueOf(datos.idProductoA), "0");
 
         assertTrue(salida.contains("Producto: " + CATEGORIA + " | Total vendido: " + VENDIDO_A
@@ -112,7 +112,7 @@ class ReporteViewTest {
 
     @Test
     void mostrarMenu_opcionCuatro_imprimeLosVendidosConLaCategoriaEnLaColumnaNombre() {
-        // RF-18. B-XX: la columna "Nombre" muestra la categoría
+        // RF-18. B-12 (#52): la columna "Nombre" muestra la categoría
         String salida = ejecutarMenu("4", CATEGORIA, "0");
 
         assertTrue(salida.contains("Productos vendidos en categoría (ID | Nombre | Cantidad | Total):"));

@@ -105,7 +105,7 @@ class ReporteModelTest {
 
     @Test
     void reporteInventarioEstatico_guardaLosCamposAlReves_queElDelDAO() throws SQLException {
-        // RF-17. B-XX: aquí el nombre va en "categoria" y la categoría en "periodo";
+        // RF-17. B-11 (#51): aquí el nombre va en "categoria" y la categoría en "periodo";
         // ReporteDAO.reporteInventario() los guarda al revés (ver MOV-05)
         DatosPruebaReporte datos = new DatosPruebaReporte();
         datos.insertar();

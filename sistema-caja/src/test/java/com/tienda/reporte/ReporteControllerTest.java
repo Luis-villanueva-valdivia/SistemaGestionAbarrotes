@@ -52,7 +52,7 @@ class ReporteControllerTest {
 
     @Test
     void ventasPorPeriodo_tipoNulo_lanzaNullPointerException() {
-        // RF-16: caso de error. B-XX: el controlador tampoco valida el tipo
+        // RF-16: caso de error. B-10 (#50): el controlador tampoco valida el tipo
         assertThrows(NullPointerException.class, () -> controller.ventasPorPeriodo(null));
     }
 

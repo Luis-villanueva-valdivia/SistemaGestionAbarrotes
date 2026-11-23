@@ -105,7 +105,7 @@ class ReporteDAOTest {
 
     @Test
     void reporteVentas_tipoNulo_lanzaNullPointerException() {
-        // RF-16: caso de error. B-XX: no se valida el tipo; tipo.toLowerCase() falla con null
+        // RF-16: caso de error. B-10 (#50): no se valida el tipo; tipo.toLowerCase() falla con null
         assertThrows(NullPointerException.class, () -> dao.reporteVentas(null));
     }
 
