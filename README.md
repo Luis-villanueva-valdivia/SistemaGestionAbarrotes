@@ -107,9 +107,21 @@ Christian Alexander Vargas Llanes
 ### Diagrama de Secuencia
 Se encuentra dentro del proyecto asta
 
+## Entrega 2 📦
+
+- **Diagrama de clases:** [`Docs/DiagramaClases_Equipo3.pdf`](Docs/DiagramaClases_Equipo3.pdf). Es el diagrama del sistema actual (línea base). La página 2 tiene la tabla de trazabilidad de cada clase con los requisitos RF-01 a RF-18.
+- **Pruebas:** el `pom.xml` está dentro de `sistema-caja/`, así que las pruebas se corren así:
+
+  ```bash
+  cd sistema-caja && mvn test
+  ```
+
+  Las pruebas usan una copia de la base de datos en `target/test-run/` y no modifican `data/tienda.db`. La evidencia está en [`Docs/pruebas/entrega-2/`](Docs/pruebas/entrega-2/).
+- **Ajuste al plan:** la separación de interfaz y lógica (#34) se pasó a la Entrega 3, junto con las demás refactorizaciones: organización de datos (#27), llamadas a métodos (#26), movimiento de funciones, condicionales y generalización. Primero se aseguraron las pruebas de caracterización de ambas interfaces, porque sin ellas no se puede comprobar que el comportamiento se conserva.
+
 ## Recursos 📌
 
 Aquí se pueden encontrar todos los documentos del proyecto
 
 - [Imágenes de diagramas](Docs/uml/imagenes)
-- [Proyecto asta](Docs/uml/astah)
+- [Proyecto asta](Docs/uml/asta)
