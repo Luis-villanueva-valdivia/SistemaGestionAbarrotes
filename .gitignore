@@ -1,0 +1,45 @@
+# ===== Java compilado =====
+*.class
+
+# ===== Paquetes / binarios =====
+*.jar
+*.war
+*.ear
+*.nar
+
+# ===== Logs =====
+*.log
+hs_err_pid*
+replay_pid*
+
+# ===== Carpetas de compilación =====
+bin/
+out/
+build/
+target/
+dist/
+
+# ===== NetBeans =====
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# ===== IntelliJ IDEA =====
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ===== Eclipse =====
+.classpath
+.project
+.settings/
+
+# ===== VS Code =====
+.vscode/
+
+# ===== Sistema operativo =====
+.DS_Store
+Thumbs.db
+desktop.ini
