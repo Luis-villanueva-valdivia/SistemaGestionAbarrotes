@@ -33,15 +33,15 @@ Registro de los *code smells* detectados y de la técnica que se aplica en cada 
 
 ## Simplificación de expresiones condicionales — Oswaldo
 
-| ID | Code smell | Ubicación | Técnica | RF/RNF afectados | Estado | Justificación |
+| ID | Code smell | Ubicación | Técnica | RF afectados | Estado | Justificación |
 |---|---|---|---|---|---|---|
 | CON-01 | Condicionales anidados al resolver un cliente opcional durante una venta | `sistema-caja/src/main/java/com/tienda/venta/VentaView.java`, `pedirDatosVenta()` (líneas 45–59; vista de consola, se reorganiza después de #34) | Sustituir condicionales anidados por cláusulas de guarda (*Replace Nested Conditional with Guard Clauses*) | RF-06, RF-08 | Detectado | |
-| CON-02 | Condicionales anidados en el flujo de actualización de clientes | `sistema-caja/src/main/java/com/tienda/cliente/ClienteView.java`, `mostrarMenu()`, caso `"4"` (líneas 109–125; vista de consola, se reorganiza después de #34) | Sustituir condicionales anidados por cláusulas de guarda (*Replace Nested Conditional with Guard Clauses*) | RF-12 | Detectado | |
-| CON-03 | Condicionales anidados en la actualización de productos desde las interfaces de consola | `sistema-caja/src/main/java/com/tienda/inventario/InventarioView.java`, `mostrarMenu()`, caso `"3"` (líneas 145–158); `sistema-caja/src/main/java/com/tienda/ui/MainView.java`, `menuInventario()`, caso `"3"` (líneas 124–141). Ambas rutas son de consola y se reorganizan después de #34. | Sustituir condicionales anidados por cláusulas de guarda (*Replace Nested Conditional with Guard Clauses*) | RF-01, RF-02 | Detectado | |
+| CON-02 | Condicionales anidados en el flujo de actualización de clientes | `sistema-caja/src/main/java/com/tienda/cliente/ClienteView.java`, `mostrarMenu()`, caso `"4"` (líneas 109–125) | Sustituir condicionales anidados por cláusulas de guarda (*Replace Nested Conditional with Guard Clauses*) | RF-12 | Descartado | `ClienteView.mostrarMenu()` no se llama desde `MainView` (ver GRA-02) y la consola no permite editar clientes (RF-12). Depende de la decisión de código sin uso en #34. |
+| CON-03 | Condicionales anidados en la actualización de productos desde la consola | `sistema-caja/src/main/java/com/tienda/ui/MainView.java`, `menuInventario()`, caso `"3"` (líneas 124–141; vista de consola, se reorganiza después de #34). El mismo patrón está en `InventarioView.mostrarMenu()` (líneas 145–158), pero ese menú no se llama (ver GRA-02). | Sustituir condicionales anidados por cláusulas de guarda (*Replace Nested Conditional with Guard Clauses*) | RF-01, RF-02 | Detectado | |
 | CON-04 | Resolución del cliente y cálculo del descuento mezclados dentro del evento que registra la venta | `sistema-caja/src/main/java/com/tienda/ui/JavaFXApp.java`, `createVentasPane()`, evento de `sellButton` (líneas 415–438; interfaz JavaFX, se reorganiza después de #34) | Descomponer condicional (*Decompose Conditional*) | RF-06, RF-07, RF-08, RF-14 | Detectado | |
 | CON-05 | Selección del método de pago y validación de efectivo/tarjeta concentradas en un mismo flujo | `sistema-caja/src/main/java/com/tienda/venta/VentaView.java`, `pedirDatosVenta()` (líneas 99–144; vista de consola, se reorganiza después de #34) | Descomponer condicional (*Decompose Conditional*) | RF-06 | Detectado | |
 | CON-06 | Validación y captura de datos de pago dentro del evento de venta | `sistema-caja/src/main/java/com/tienda/ui/JavaFXApp.java`, `createVentasPane()`, evento de `sellButton` (líneas 448–470; interfaz JavaFX, se reorganiza después de #34) | Descomponer condicional (*Decompose Conditional*) | RF-06 | Detectado | |
-| CON-07 | Uso de una variable booleana de control para terminar los ciclos de los menús | `MainView.mostrarMenu()` (líneas 39–57); `ClienteView.mostrarMenu()` (líneas 83–84 y 134); `InventarioView.mostrarMenu()` (líneas 127–128 y 172); `PromocionView.mostrarMenu()` (líneas 46–47 y 90); `ReporteView.mostrarMenu()` (líneas 9–10 y 59). Todas son vistas/menús de consola y se reorganizan después de #34. | Eliminar la variable de control (*Remove Control Flag*) | RNF-01, RNF-02 | Detectado | |
+| CON-07 | Uso de una variable booleana de control para terminar los ciclos de los menús | `MainView.mostrarMenu()` (líneas 39–57); `ReporteView.mostrarMenu()` (líneas 9–10 y 59). Son menús de consola y se reorganizan después de #34. El mismo patrón está en `ClienteView`, `InventarioView` y `PromocionView`, pero esos menús no se llaman (ver GRA-02). | Eliminar la variable de control (*Remove Control Flag*) | RNF-02 | Detectado | |
 
 **Técnicas que no aplican:**
 
@@ -55,10 +55,11 @@ Registro de los *code smells* detectados y de la técnica que se aplica en cada 
 
 **Notas de trazabilidad:**
 
-- CON-02 corresponde a RF-12 porque ese requisito contempla actualizar los datos de clientes.
+- CON-02 queda descartado porque `ClienteView.mostrarMenu()` no se ejecuta; si #34 decide conectarlo, se vuelve a evaluar.
 - CON-03 corresponde a RF-01 y RF-02: el flujo edita datos generales del producto y también su cantidad/existencia.
 - CON-04 incluye RF-14 porque el código identifica clientes frecuentes y aplica el descuento asociado, además de calcular el total (RF-07) dentro del flujo de venta (RF-06) que genera el recibo (RF-08).
-- CON-07 se relaciona con RNF-01 por la navegación entre menús y con RNF-02 porque el ciclo mantiene el menú operativo ante opciones inválidas.
+- CON-07 se relaciona con RNF-02 porque el ciclo mantiene el menú operativo ante opciones inválidas.
+- CON-04 se cruza con MOV-04 (descuento en el botón de venta) y CON-05/CON-06 con GRA-04 (método de pago como texto). Se coordinan al refactorizar para no aplicar dos cambios sobre las mismas líneas.
 
 ## Movimiento de funciones entre objetos — Paola
 
