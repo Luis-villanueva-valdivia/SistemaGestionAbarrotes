@@ -21,7 +21,7 @@ Los cuatro ejemplos iniciales están en `sistema-caja/src/test/java/com/tienda/E
 
 ## Cómo reutilizar los ejemplos
 
-Cada responsable debe crear sus propias clases de prueba bajo `src/test/java`, siguiendo el paquete de la clase que prueba (por ejemplo, `com/tienda/cliente/ClienteDAOTest.java`). Para controladores, inyectar un DAO falso y evitar SQLite; para DAO, usar la conexión relativa `data/tienda.db`, que apunta automáticamente a la copia aislada; para métodos que imprimen, guardar y restaurar `System.out`; y para vistas de consola, guardar y restaurar `System.in` y pasar un `Scanner` construido con esa entrada. No colocar documentación dentro de `src/test/java`: esta guía vive en `docs/pruebas/` a nivel raíz del repositorio.
+Cada responsable debe crear sus propias clases de prueba bajo `src/test/java`, siguiendo el paquete de la clase que prueba (por ejemplo, `com/tienda/cliente/ClienteDAOTest.java`). Para controladores, inyectar un DAO falso y evitar SQLite; para DAO, usar la conexión relativa `data/tienda.db`, que apunta automáticamente a la copia aislada; para métodos que imprimen, guardar y restaurar `System.out`; y para vistas de consola, guardar y restaurar `System.in` y pasar un `Scanner` construido con esa entrada. No colocar documentación dentro de `src/test/java`: esta guía vive en `Docs/pruebas/` a nivel raíz del repositorio.
 
 ## Evidencia de la ejecución completa (Entrega 2)
 

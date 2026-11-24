@@ -119,7 +119,7 @@ flowchart LR
 | **Lun 23 · 23:59** | #29 y #32 pruebas fusionadas (completan las 10) y #33 matriz cerrada | Katherin y Oswaldo |
 | **Mar 24 · 07:30** | #35 diagrama de clases del sistema actual fusionado | Paola |
 | **Mar 24 · 08:00** | #36 `develop` → `main` y etiqueta `v1.1.0` | Luis |
-| **Mar 24 · 09:00** | #37 pruebas ejecutadas y evidencia en `docs/pruebas/entrega-2/` | Oswaldo |
+| **Mar 24 · 09:00** | #37 pruebas ejecutadas y evidencia en `Docs/pruebas/entrega-2/` | Oswaldo |
 | **Mar 24 · 10:00** | #38 documento de la entrega, con el párrafo del ajuste al plan | José Armando |
 
 **Entrega 3 (jueves 3 de diciembre):** separación de dominio y presentación (#34) y refactorizaciones de organización de datos y llamadas a métodos; después, movimiento de funciones, condicionales y generalización (30 nov), pruebas de caja negra (1 dic, José Armando coordina), matriz de trazabilidad, Javadoc y diagrama de clases del sistema refactorizado (2 dic), versión final `v2.0.0` (3 dic).
