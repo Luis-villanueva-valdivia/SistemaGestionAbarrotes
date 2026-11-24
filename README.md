@@ -1,6 +1,6 @@
 # SistemaGestionAbarrotes 🧾
 
-![Sistemacaja](docs/imagenes/caja.jpg)
+![Sistemacaja](Docs/imagenes/caja.jpg)
 
 Es una aplicación de software que permite a una tienda de abarrotes gestionar sus operaciones de manera efectiva. Brinda una solución completa para las actividades diarias de la tienda, mejorando la eficiencia, la precisión y la toma de decisiones comerciales.
 
@@ -84,25 +84,25 @@ Christian Alexander Vargas Llanes
 ## Diagramas UML 📌
 
 ### Diagrama de Casos de Uso
-![Diagrama de Casos de Uso](docs/uml/imagenes/DiagramaCasosUso.png)
+![Diagrama de Casos de Uso](Docs/uml/imagenes/DiagramaCasosUso.png)
 
 ### Diagrama de Clases
-![Diagrama de Clases](docs/uml/imagenes/Diagramamodelos.png)
+![Diagrama de Clases](Docs/uml/imagenes/Diagramamodelos.png)
 
 ### Diagrama de Clases (Base de Datos)
-![Diagrama de Clases DB](docs/uml/imagenes/Diagramabasededatos.png)
+![Diagrama de Clases DB](Docs/uml/imagenes/Diagramabasededatos.png)
 
 ### Diagrama de Clases de Venta
-![Diagrama de Clases Venta](docs/uml/imagenes/Diagramavistasycontroladores.png)
+![Diagrama de Clases Venta](Docs/uml/imagenes/Diagramavistasycontroladores.png)
 
 ### Diagrama de Actividad
-![Diagrama de Actividad](docs/uml/imagenes/DiagramaActividadFinal.png)
+![Diagrama de Actividad](Docs/uml/imagenes/DiagramaActividadFinal.png)
 
 ### Diagrama de Estados
-![Diagrama de Estados](docs/uml/imagenes/DiagramaEstados.png)
+![Diagrama de Estados](Docs/uml/imagenes/DiagramaEstados.png)
 
 ### Diagrama de Comunicación
-![Diagrama de Comunicación](docs/uml/imagenes/DiagramaComunicacion.png)
+![Diagrama de Comunicación](Docs/uml/imagenes/DiagramaComunicacion.png)
 
 ### Diagrama de Secuencia
 Se encuentra dentro del proyecto asta
@@ -111,5 +111,5 @@ Se encuentra dentro del proyecto asta
 
 Aquí se pueden encontrar todos los documentos del proyecto
 
-- [Imágenes de diagramas](docs/uml/imagenes)
-- [Proyecto asta](docs/uml/astah)
+- [Imágenes de diagramas](Docs/uml/imagenes)
+- [Proyecto asta](Docs/uml/astah)

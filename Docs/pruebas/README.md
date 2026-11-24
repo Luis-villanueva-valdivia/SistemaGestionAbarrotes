@@ -1,6 +1,6 @@
 # Evidencia de pruebas
 
-Una carpeta por entrega (`entrega-2/`, `entrega-3/`) con el reporte de `target/surefire-reports` y la captura de `mvn test` en un clon limpio. Ver `docs/convenciones.md` §11.4.
+Una carpeta por entrega (`entrega-2/`, `entrega-3/`) con el reporte de `target/surefire-reports` y la captura de `mvn test` en un clon limpio. Ver `Docs/convenciones.md` §11.4.
 
 ## Ejecución desde Maven
 
@@ -8,4 +8,4 @@ Las pruebas deben ejecutarse mediante Maven desde la carpeta `sistema-caja/`, ut
 
 ## Evidencia de las entregas
 
-Para cada entrega se debe crear una carpeta correspondiente (`entrega-2/`, `entrega-3/`) dentro de `docs/pruebas/`. En ella se guardará el reporte generado en `target/surefire-reports/` y una captura de la ejecución de `mvn test` en un clon limpio. Esta estructura se utilizará para reunir la evidencia de cada entrega, de acuerdo con `docs/convenciones.md`, sección 11.4.
+Para cada entrega se debe crear una carpeta correspondiente (`entrega-2/`, `entrega-3/`) dentro de `Docs/pruebas/`. En ella se guardará el reporte generado en `target/surefire-reports/` y una captura de la ejecución de `mvn test` en un clon limpio. Esta estructura se utilizará para reunir la evidencia de cada entrega, de acuerdo con `Docs/convenciones.md`, sección 11.4.
