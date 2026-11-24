@@ -1,6 +1,6 @@
 # SistemaGestionAbarrotes 🧾
 
-![Sistemacaja](docs/imagenes/caja.jpg)
+![Sistemacaja](Docs/imagenes/caja.jpg)
 
 Es una aplicación de software que permite a una tienda de abarrotes gestionar sus operaciones de manera efectiva. Brinda una solución completa para las actividades diarias de la tienda, mejorando la eficiencia, la precisión y la toma de decisiones comerciales.
 
@@ -84,32 +84,44 @@ Christian Alexander Vargas Llanes
 ## Diagramas UML 📌
 
 ### Diagrama de Casos de Uso
-![Diagrama de Casos de Uso](docs/uml/imagenes/DiagramaCasosUso.png)
+![Diagrama de Casos de Uso](Docs/uml/imagenes/DiagramaCasosUso.png)
 
 ### Diagrama de Clases
-![Diagrama de Clases](docs/uml/imagenes/Diagramamodelos.png)
+![Diagrama de Clases](Docs/uml/imagenes/Diagramamodelos.png)
 
 ### Diagrama de Clases (Base de Datos)
-![Diagrama de Clases DB](docs/uml/imagenes/Diagramabasededatos.png)
+![Diagrama de Clases DB](Docs/uml/imagenes/Diagramabasededatos.png)
 
 ### Diagrama de Clases de Venta
-![Diagrama de Clases Venta](docs/uml/imagenes/Diagramavistasycontroladores.png)
+![Diagrama de Clases Venta](Docs/uml/imagenes/Diagramavistasycontroladores.png)
 
 ### Diagrama de Actividad
-![Diagrama de Actividad](docs/uml/imagenes/DiagramaActividadFinal.png)
+![Diagrama de Actividad](Docs/uml/imagenes/DiagramaActividadFinal.png)
 
 ### Diagrama de Estados
-![Diagrama de Estados](docs/uml/imagenes/DiagramaEstados.png)
+![Diagrama de Estados](Docs/uml/imagenes/DiagramaEstados.png)
 
 ### Diagrama de Comunicación
-![Diagrama de Comunicación](docs/uml/imagenes/DiagramaComunicacion.png)
+![Diagrama de Comunicación](Docs/uml/imagenes/DiagramaComunicacion.png)
 
 ### Diagrama de Secuencia
 Se encuentra dentro del proyecto asta
+
+## Entrega 2 📦
+
+- **Diagrama de clases:** [`Docs/DiagramaClases_Equipo3.pdf`](Docs/DiagramaClases_Equipo3.pdf). Es el diagrama del sistema actual (línea base). La página 2 tiene la tabla de trazabilidad de cada clase con los requisitos RF-01 a RF-18.
+- **Pruebas:** el `pom.xml` está dentro de `sistema-caja/`, así que las pruebas se corren así:
+
+  ```bash
+  cd sistema-caja && mvn test
+  ```
+
+  Las pruebas usan una copia de la base de datos en `target/test-run/` y no modifican `data/tienda.db`. La evidencia está en [`Docs/pruebas/entrega-2/`](Docs/pruebas/entrega-2/).
+- **Ajuste al plan:** la separación de interfaz y lógica (#34) se pasó a la Entrega 3, junto con las demás refactorizaciones: organización de datos (#27), llamadas a métodos (#26), movimiento de funciones, condicionales y generalización. Primero se aseguraron las pruebas de caracterización de ambas interfaces, porque sin ellas no se puede comprobar que el comportamiento se conserva.
 
 ## Recursos 📌
 
 Aquí se pueden encontrar todos los documentos del proyecto
 
-- [Imágenes de diagramas](docs/uml/imagenes)
-- [Proyecto asta](docs/uml/astah)
+- [Imágenes de diagramas](Docs/uml/imagenes)
+- [Proyecto asta](Docs/uml/asta)
