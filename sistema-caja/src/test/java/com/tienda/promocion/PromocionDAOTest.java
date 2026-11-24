@@ -84,7 +84,7 @@ class PromocionDAOTest {
                 promocion.getId(), DESCRIPCION_VALIDA, 15.5);
 
         // Caso límite:
-        // B-13: no se valida que el descuento esté entre 0 y 100.
+        // B-13 (#57): no se valida que el descuento esté entre 0 y 100.
         // Se conserva el comportamiento actual: el DAO almacena el porcentaje 150.
         PromocionModel promocionFueraDeRango = new PromocionModel();
         promocionFueraDeRango.setDescripcion(DESCRIPCION_LIMITE);
