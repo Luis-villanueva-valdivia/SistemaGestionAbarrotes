@@ -1,4 +1,3 @@
-
 package com.tienda.promocion;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,7 +67,7 @@ class PromocionDAOTest {
      * @throws SQLException si falla la consulta de verificación
      */
     @Test
-    void agregar_promocionValida_persisteDatosYAsignaId() throws SQLException {
+    void agregar_guardaPromocion_aceptaDescuentoMayorA100() throws SQLException {
         // RF-15: registrar, editar y eliminar promociones y descuentos para productos específicos.
         PromocionDAO dao = new PromocionDAO();
 
@@ -85,7 +84,7 @@ class PromocionDAOTest {
                 promocion.getId(), DESCRIPCION_VALIDA, 15.5);
 
         // Caso límite:
-        // B-XX: no se valida que el descuento esté entre 0 y 100.
+        // B-13: no se valida que el descuento esté entre 0 y 100.
         // Se conserva el comportamiento actual: el DAO almacena el porcentaje 150.
         PromocionModel promocionFueraDeRango = new PromocionModel();
         promocionFueraDeRango.setDescripcion(DESCRIPCION_LIMITE);

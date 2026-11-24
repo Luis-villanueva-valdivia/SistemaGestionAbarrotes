@@ -19,7 +19,7 @@ class PromocionViewTest {
      * Comprueba la captura válida y el comportamiento ante un porcentaje no numérico.
      */
     @Test
-    void pedirDatosPromocion_entradaValida_devuelvePromocionCapturada() {
+    void pedirDatosPromocion_capturaDatos_porcentajeNoNumericoDevuelveNull() {
         // RF-15: registrar, editar y eliminar promociones y descuentos para productos específicos.
         String entradaValida = "  Promoción de temporada  \n15.5\n";
 
