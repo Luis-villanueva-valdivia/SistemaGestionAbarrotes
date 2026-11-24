@@ -4,7 +4,7 @@ Reglas con las que trabajamos en este repositorio. Si algo no está aquí, se de
 
 **Proyecto:** refactorización del *Sistema de Gestión de Abarrotes* (Construcción de Software, Equipo 3). El sistema original no es nuestro: la versión de partida está guardada en la etiqueta `v1.0-original`. **No se agregan funciones nuevas:** el sistema debe hacer exactamente lo mismo antes y después de cada cambio (RF-01 a RF-18 de la ERS).
 
-La lista de issues, las dependencias y el calendario están en [`docs/planeacion.md`](planeacion.md).
+La lista de issues, las dependencias y el calendario están en [`Docs/planeacion.md`](planeacion.md).
 
 **Resumen rápido:**
 
@@ -50,11 +50,11 @@ El sistema tiene **dos interfaces**: la gráfica (`JavaFXApp`) y la de consola (
 | `sistema-caja/src/main/java/com/tienda/` | Código del sistema, un paquete por módulo (`venta`, `producto`, `inventario`, `cliente`, `promocion`, `reporte`, `metodoPago`, `ui`, `util`) |
 | `sistema-caja/src/test/java/com/tienda/` | Pruebas JUnit, en el mismo paquete que la clase que prueban |
 | `sistema-caja/data/` | `schema.sql` y la base de datos `tienda.db` |
-| `docs/convenciones.md` | Este archivo |
-| `docs/planeacion.md` | Issues, responsables, dependencias y calendario |
-| `docs/matriz-refactorizaciones.md` | *Code smells* detectados y técnica aplicada en cada caso |
-| `docs/uml/` | Diagramas (los originales y el de clases refactorizado) |
-| `docs/pruebas/` | Evidencia de la ejecución de pruebas de cada entrega |
+| `Docs/convenciones.md` | Este archivo |
+| `Docs/planeacion.md` | Issues, responsables, dependencias y calendario |
+| `Docs/matriz-refactorizaciones.md` | *Code smells* detectados y técnica aplicada en cada caso |
+| `Docs/uml/` | Diagramas (los originales y el de clases refactorizado) |
+| `Docs/pruebas/` | Evidencia de la ejecución de pruebas de cada entrega |
 | `.github/pull_request_template.md` | Plantilla de PR |
 
 La versión original del sistema **no se toca**: está en la etiqueta `v1.0-original` para comparar.
@@ -193,19 +193,19 @@ Toda clase refactorizada tiene sus pruebas en `src/test/java`, y deben pasar **i
 
 ## 8. Orden de trabajo y dueños de archivo
 
-El orden completo, con el diagrama de dependencias, está en [`docs/planeacion.md`](planeacion.md). En corto:
+El orden completo, con el diagrama de dependencias, está en [`Docs/planeacion.md`](planeacion.md). En corto:
 
 **Base de pruebas → (detección ‖ pruebas por módulo) → gran refactorización y refactorizaciones de datos y llamadas → diagrama → entrega**
 
 | Unidad | Responsable | Archivos que toca | Depende de |
 |---|---|---|---|
 | Base de pruebas | Oswaldo | `pom.xml`, `src/test` | — |
-| Detección (las 5 unidades) | Cada quien su unidad | `docs/matriz-refactorizaciones.md` (solo su sección) | — |
+| Detección (las 5 unidades) | Cada quien su unidad | `Docs/matriz-refactorizaciones.md` (solo su sección) | — |
 | Pruebas por módulo | Cada quien su módulo (§11.3) | `src/test` de su módulo | Base de pruebas |
 | Gran refactorización | Luis coordina; cada quien su módulo | `JavaFXApp`, `MainView`, `*View` | Pruebas de todos los módulos |
 | Organización de datos | Katherin | Modelos (`*Model`) | Su detección y las pruebas |
 | Llamadas a métodos | José Armando | DAO y controladores (firmas de métodos) | Su detección y las pruebas |
-| Diagrama de clases | Paola | `docs/uml/` | Gran refactorización |
+| Diagrama de clases | Paola | `Docs/uml/` | Gran refactorización |
 
 - En el código heredado, **el dueño de cada clase es quien tiene el issue que la está cambiando.** Si necesitas tocar una clase que está en el issue de otra persona, avísale en su issue antes.
 - Organización de datos y llamadas a métodos trabajan primero en **modelos y DAO**, que la gran refactorización no mueve, para no chocar.
@@ -281,7 +281,7 @@ Son **pruebas de caracterización**: registran lo que el sistema **hace hoy**, n
 ### 11.4 Dónde se registran
 
 - En cada PR: captura de `mvn test` en verde.
-- En cada entrega: el reporte de `target/surefire-reports` y la captura de la ejecución en un clon limpio van a `docs/pruebas/entrega-N/`.
+- En cada entrega: el reporte de `target/surefire-reports` y la captura de la ejecución en un clon limpio van a `Docs/pruebas/entrega-N/`.
 
 ---
 

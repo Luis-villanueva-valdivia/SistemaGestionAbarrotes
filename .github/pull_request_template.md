@@ -57,7 +57,7 @@ Closes #XX
 - [ ] Refactorizaciones: una técnica por commit y el comentario `// [ID] Técnica` arriba del código cambiado.
 - [ ] La matriz de refactorizaciones está actualizada.
 - [ ] Javadoc en las clases y métodos públicos que toqué.
-- [ ] Revisor asignado según `docs/convenciones.md` §6, y avisé en Slack.
+- [ ] Revisor asignado según `Docs/convenciones.md` §6, y avisé en Slack.
 
 ## Notas para el revisor
 
