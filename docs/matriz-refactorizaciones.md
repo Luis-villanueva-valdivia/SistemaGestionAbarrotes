@@ -1,4 +1,4 @@
-  # Matriz de refactorizaciones
+# Matriz de refactorizaciones
 
 Registro de los *code smells* detectados y de la técnica que se aplica en cada caso. Responsable de integrarla y revisarla: **Katherin**. Reglas completas en `docs/convenciones.md` §12.1 y §5.
 
@@ -61,14 +61,14 @@ Registro de los *code smells* detectados y de la técnica que se aplica en cada 
 
 ---
 
-## Organización de datos - Katherin
+## Organización de datos — Katherin
 
 | ID | Code smell | Ubicación | Técnica | RF afectados | Estado | Justificación |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | DAT-01 | Datos de dominio con reglas de formato (`vencimiento`, `codigo`) representados como `String` planos sin validación centralizada | `producto/ProductoModel.java` (`vencimiento`, `codigo`, líneas 8 y 12) | Reemplazar valor de dato con objeto (Replace Data Value with Object) | RF-01, RF-03 | Detectado | |
 | DAT-02 | El arreglo `productos` se devuelve y asigna directamente en `getProductos()` y `setProductos()`, permitiendo alterar el arreglo interno sin recálculo de totales | `venta/VentaModel.java` (`productos`, líneas 11, 25, 38) | Encapsular colección (Encapsulate Collection) | RF-06, RF-08 | Detectado | |
 | DAT-03 | El tipo de pago se maneja como texto libre (`"Efectivo"` / `"Tarjeta"`) con campos condicionales (`numeroTarjeta`) y comparaciones literales repetidas en lugar de reutilizar las clases `PagoEfectivo` y `PagoTarjeta` | `venta/VentaModel.java` (`metodoPago`, `numeroTarjeta`, líneas 16-17, 29-30, 42-43); `venta/VentaController.java` (líneas 65-68); `venta/VentaView.java` (líneas 105, 125); `ui/JavaFXApp.java` (líneas 327-342, 448, 534) | Reemplazar código de tipo con subclases (Replace Type Code with Subclasses) | RF-06, RF-08 | Detectado | |
-| DAT-04 | Los datos del cliente asociado a la venta se guardan como valores sueltos (`cliente`, `clienteId`), duplicando datos en vez de referenciar la instancia de `ClienteModel` | `venta/VentaModel.java` (`cliente`, `clienteId`, líneas 12-13, 26-27, 39-40) | Cambiar valor a referencia (Change Value to Reference) | RF-06, RF-14, RF-15 | Detectado | |
+| DAT-04 | Los datos del cliente asociado a la venta se guardan como valores sueltos (`cliente`, `clienteId`), duplicando datos en vez de referenciar la instancia de `ClienteModel` | `venta/VentaModel.java` (`cliente`, `clienteId`, líneas 12-13, 26-27, 39-40) | Cambiar valor a referencia (Change Value to Reference) | RF-06, RF-13, RF-14 | Detectado | |
 | DAT-05 | El tipo de movimiento (`"ENTRADA"`, `"SALIDA"`, `"AJUSTE"`) se almacena como `String` libre y se evalúa con condicionales repetidos (nota: actualmente `"AJUSTE"` se guarda como `"ENTRADA"`, no cambiar este comportamiento al refactorizar) | `inventario/MovimientoInventarioModel.java` (`tipo`, líneas 6, 13, 20); `inventario/MovimientoDAO.java` (líneas 35-37); `venta/VentaController.java` (línea 24); `ui/JavaFXApp.java` (líneas 244-245) | Reemplazar código de tipo con clase (Replace Type Code with Class) | RF-02, RF-05, RF-09 | Detectado | |
 | DAT-06 | La fecha del movimiento se maneja como `String` plano en lugar de un objeto de fecha (`LocalDate` / `LocalDateTime`), dificultando ordenamiento y filtros por periodo | `inventario/MovimientoInventarioModel.java` (`fecha`, líneas 5, 12, 19) | Reemplazar valor de dato con objeto (Replace Data Value with Object) | RF-05 | Detectado | |
 | DAT-07 | Número mágico `0.05` (5 % de descuento por cliente frecuente) y umbral `1` incrustados directamente en la lógica de cobro (`ui/JavaFXApp.java`: se refactoriza después de #34) | `ui/JavaFXApp.java`, `createVentasPane()` (líneas 434-435) | Reemplazar número mágico con constante simbólica (Replace Magic Number with Symbolic Constant) | RF-07, RF-14 | Detectado | |
